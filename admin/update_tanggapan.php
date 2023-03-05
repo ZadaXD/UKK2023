@@ -1,0 +1,19 @@
+<?php 
+// koneksi database
+include '../config.php';
+
+// menangkap data yang di kirim dari form
+$id_pengaduan = $_POST['id_pengaduan'];
+$id_tanggapan = $_POST['id_tanggapan'];
+$tgl_tanggapan = date('Y-m-d');
+$laporan = $_POST['laporan'];
+$id_petugas = $_POST['id_petugas'];
+$status = $_POST['status'];
+
+// menginput data ke database
+mysqli_query($koneksi,"insert tanggapan set status='$status' where id_tanggapan='$id_tanggapan'");
+mysqli_query($koneksi,"update pengaduan set status='$status' where id_pengaduan='$id_pengaduan'");
+// mengalihkan halaman kembali ke index.php
+header("location:tampilver.php");
+
+?>
